@@ -1,0 +1,65 @@
+<html>
+    <style>
+    </style>
+
+    
+<head>
+
+</head>
+
+<body style= "text-align: center;" background="sim.png">
+
+    <h1> Pedra Papel Tesoura </h1>
+    <p>Informe seu nome:</p>
+    <input type="text"/>
+    <p>Escolha uma opção</p>
+
+    <button id="Pedra">Pedra</button>
+    <button id="Papel">Papel</button>
+    <button id="Tesoura">Tesoura</button>
+    <p id="resultado"></p>
+
+    <script>
+        function gerajogadaAleatorio (){
+            const opcoes = ["Pedra", "Papel", "Tesoura"]
+            opcoesAleatoria = Math.floor(Math.random() *3)
+            return opcoes[opcoesAleatoria]
+        }
+
+        function jogar(player){
+            pc = gerajogadaAleatorio()
+
+            let resultado = ''
+            if(player === pc){
+                resultado = 'Empate'
+
+            } else if (
+               (player === 'Pedra' && pc === 'Tesoura') ||
+               (player === 'Tesoura' && pc === 'Papel') ||
+                (player === 'Papel' && pc === 'Pedra')){
+                resultado = 'Você Ganhou!!! Computador:' + pc + ' Você:' + player
+            } else {
+                resultado = 'Vc perdeu!'
+            }
+            document.getElementById('resultado').innerText = resultado
+        }
+
+        const Pedra = document.getElementById("Pedra")
+        Pedra.addEventListener('click', function(){
+        jogar("Pedra")
+        })
+
+        const Papel = document.getElementById("Papel")
+        Papel.addEventListener('click', function(){
+        jogar("Papel")
+        })
+
+        const Tesoura = document.getElementById("Tesoura")
+        Tesoura.addEventListener('click', function(){
+        jogar("Tesoura")
+        })
+    </script>
+
+</body>
+
+</html>
